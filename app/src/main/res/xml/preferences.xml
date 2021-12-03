@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_group_images">
+
+        <Preference
+            android:key="settings_pass_img"
+            android:title="@string/settings_passport" />
+        <Preference
+            android:key="settings_id_img"
+            android:title="@string/settings_identity" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settings_group_displaysettings">
+
+        <ca.cheuksblog.vaccinepassport.IntEditTextPreference
+            android:key="settings_pass_rot"
+            android:title="@string/settings_passport_rotate" />
+        <ca.cheuksblog.vaccinepassport.IntEditTextPreference
+            android:key="settings_id_rot"
+            android:title="@string/settings_passport_rotate" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/settings_group_about">
+
+        <Preference
+            android:key="settings_about_btn"
+            android:title="@string/settings_about" />
+        <Preference
+            android:key="settings_instructions_btn"
+            android:title="@string/settings_help" />
+    </PreferenceCategory>
+</PreferenceScreen>
