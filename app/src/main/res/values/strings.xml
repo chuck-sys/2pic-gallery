@@ -11,4 +11,5 @@
     <string name="app_about">The Vaccine Passport app was created because the author was too lazy to scroll down their phone\'s gallery and find their vaccine passport QR code. Made with love.</string>
     <string name="settings_help">How to use</string>
     <string name="app_help">Tap on the image to change from your vaccine passport to your ID.</string>
+    <string name="app_perms_issue">Read External Storage permission allows us to read files. Please allow this permission in App Settings.</string>
 </resources>

@@ -11,11 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 100;
     private AppPreferenceScreen preferences;
-    private boolean isInPreferences = false;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -28,16 +28,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.context_settings:
-                if (!isInPreferences) {
-                    getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragmentContainerView, preferences)
-                            .addToBackStack(null)
-                            .commit();
+                final FragmentManager fm = getSupportFragmentManager();
+                if (fm.findFragmentById(preferences.getId()) == null) {
+                    fm.beginTransaction()
+                          .replace(R.id.fragmentContainerView, preferences)
+                          .addToBackStack(null)
+                          .commit();
                 } else {
-                    getSupportFragmentManager().popBackStack();
+                    fm.popBackStack();
                 }
-                isInPreferences = !isInPreferences;
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Toast.makeText(this, "Read External Storage permission allows us to read files. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.app_perms_issue, Toast.LENGTH_LONG).show();
         } else {
             ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
