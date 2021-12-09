@@ -28,6 +28,8 @@ public class AppPreferenceScreen extends PreferenceFragmentCompat {
     public static final String PASS_ROT_KEY = "settings_pass_rot";
     public static final String ID_KEY = "settings_id_img";
     public static final String ID_ROT_KEY = "settings_id_rot";
+    public static final String PASS_SCALE_KEY = "settings_pass_scale";
+    public static final String ID_SCALE_KEY = "settings_id_scale";
     public static final String[] LAUNCH_FILTER = new String[] {
             "image/*"
     };

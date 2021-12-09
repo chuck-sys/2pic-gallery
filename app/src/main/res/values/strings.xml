@@ -12,4 +12,5 @@
     <string name="settings_help">How to use</string>
     <string name="app_help">Tap on the image to change from your vaccine passport to your ID.</string>
     <string name="app_perms_issue">Read External Storage permission allows us to read files. Please allow this permission in App Settings.</string>
+    <string name="image_content_desc">Image containing vaccine passport or ID</string>
 </resources>

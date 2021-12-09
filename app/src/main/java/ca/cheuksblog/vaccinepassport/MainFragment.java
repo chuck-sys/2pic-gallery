@@ -1,17 +1,22 @@
 package ca.cheuksblog.vaccinepassport;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 public class MainFragment extends Fragment {
     private ImageView ivc;
+    private SeekBar scaleBar;
+
     private Uri passImg;
     private Uri idImg;
     private boolean isViewingPass = true;
@@ -25,6 +30,7 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ivc = getView().findViewById(R.id.ivMain);
+        scaleBar = getView().findViewById(R.id.scaleBar);
 
         update();
 
@@ -32,6 +38,44 @@ public class MainFragment extends Fragment {
             isViewingPass = !isViewingPass;
             setIVC();
         });
+        scaleBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                final float scale = progress / 100.0f + 0.5f;
+                ivc.setScaleX(scale);
+                ivc.setScaleY(scale);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                saveScale();
+            }
+        });
+    }
+
+    private void loadScale() {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        final int progress = prefs.getInt(isViewingPass ?
+                AppPreferenceScreen.PASS_SCALE_KEY :
+                AppPreferenceScreen.ID_SCALE_KEY, 49);
+        final float scale = progress / 100.0f + 0.5f;
+        ivc.setScaleX(scale);
+        ivc.setScaleY(scale);
+        scaleBar.setProgress(progress);
+    }
+
+    private void saveScale() {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        if (isViewingPass) {
+            prefs.edit().putInt(AppPreferenceScreen.PASS_SCALE_KEY, scaleBar.getProgress()).apply();
+        } else {
+            prefs.edit().putInt(AppPreferenceScreen.ID_SCALE_KEY, scaleBar.getProgress()).apply();
+        }
     }
 
     private void setIVC() {
@@ -42,6 +86,7 @@ public class MainFragment extends Fragment {
             ivc.setRotation(AppPreferenceScreen.getIdRotation(this));
             ivc.setImageURI(idImg);
         }
+        loadScale();
     }
 
     public void onSetPassImage() {
