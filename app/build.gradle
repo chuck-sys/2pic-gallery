@@ -9,8 +9,8 @@ android {
         applicationId "ca.cheuksblog.vaccinepassport"
         minSdk 24
         targetSdk 30
-        versionCode 7
-        versionName "1.1.2"
+        versionCode 8
+        versionName "1.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
