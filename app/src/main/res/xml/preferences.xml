@@ -12,12 +12,12 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_group_displaysettings">
 
-        <ca.cheuksblog.vaccinepassport.IntEditTextPreference
+        <ca.cheuksblog.twopicgallery.IntEditTextPreference
             android:key="settings_pass_rot"
             android:title="@string/settings_passport_rotate" />
-        <ca.cheuksblog.vaccinepassport.IntEditTextPreference
+        <ca.cheuksblog.twopicgallery.IntEditTextPreference
             android:key="settings_id_rot"
-            android:title="@string/settings_passport_rotate" />
+            android:title="@string/settings_identity_rotate" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/settings_group_about">
 

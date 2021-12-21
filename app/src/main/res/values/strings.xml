@@ -1,16 +1,17 @@
 <resources>
-    <string name="app_name">Vaccine Passport</string>
+    <string name="app_name">2Pic Gallery</string>
     <string name="context_settings">Settings</string>
-    <string name="settings_passport">Vaccine Passport Image</string>
-    <string name="settings_identity">Identification Image</string>
-    <string name="settings_passport_rotate">Vaccine Passport Image Rotation (degrees)</string>
+    <string name="settings_passport">1st Image</string>
+    <string name="settings_identity">2nd Image</string>
+    <string name="settings_passport_rotate">1st Image Rotation (degrees)</string>
+    <string name="settings_identity_rotate">2nd Image Rotation (degrees)</string>
     <string name="settings_group_images">Images</string>
     <string name="settings_group_displaysettings">Display Settings</string>
     <string name="settings_group_about">About</string>
     <string name="settings_about">About this app</string>
-    <string name="app_about">The Vaccine Passport app was created because the author was too lazy to scroll down their phone\'s gallery and find their vaccine passport QR code. Made with love.</string>
+    <string name="app_about">The 2Pic Gallery app was created because the author was too lazy to scroll down their phone\'s gallery and find 2 images. Made with love.</string>
     <string name="settings_help">How to use</string>
-    <string name="app_help">Tap on the image to change from your vaccine passport to your ID.</string>
+    <string name="app_help">Tap on the image to change between the two images.</string>
     <string name="app_perms_issue">Read External Storage permission allows us to read files. Please allow this permission in App Settings.</string>
-    <string name="image_content_desc">Image containing vaccine passport or ID</string>
+    <string name="image_content_desc">Some pre-set image</string>
 </resources>

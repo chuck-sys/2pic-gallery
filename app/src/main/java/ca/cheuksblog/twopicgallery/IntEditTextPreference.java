@@ -1,4 +1,4 @@
-package ca.cheuksblog.vaccinepassport;
+package ca.cheuksblog.twopicgallery;
 
 import android.content.Context;
 import android.util.AttributeSet;
