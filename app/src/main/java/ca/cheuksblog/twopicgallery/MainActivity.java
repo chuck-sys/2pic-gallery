@@ -2,6 +2,7 @@ package ca.cheuksblog.twopicgallery;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,22 +25,41 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private boolean isPreferencesOpen() {
+        final FragmentManager fm = getSupportFragmentManager();
+        return fm.findFragmentById(preferences.getId()) != null;
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.context_settings:
-                final FragmentManager fm = getSupportFragmentManager();
-                if (fm.findFragmentById(preferences.getId()) == null) {
-                    fm.beginTransaction()
-                          .replace(R.id.fragmentContainerView, preferences)
-                          .addToBackStack(null)
-                          .commit();
+        if (item.getItemId() == R.id.context_settings) {
+            final FragmentManager fm = getSupportFragmentManager();
+            if (!isPreferencesOpen()) {
+                fm.beginTransaction()
+                        .replace(R.id.fragmentContainerView, preferences)
+                        .addToBackStack(null)
+                        .commit();
+            } else {
+                fm.popBackStack();
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (isPreferencesOpen()) {
+                    return super.onKeyUp(keyCode, event);
                 } else {
-                    fm.popBackStack();
+                    preferences.main.clickImage();
+                    return true;
                 }
-                return true;
             default:
-                return super.onOptionsItemSelected(item);
+                return super.onKeyUp(keyCode, event);
         }
     }
 

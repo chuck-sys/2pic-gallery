@@ -11,7 +11,7 @@
     <string name="settings_about">About this app</string>
     <string name="app_about">The 2Pic Gallery app was created because the author was too lazy to scroll down their phone\'s gallery and find 2 images. Made with love.</string>
     <string name="settings_help">How to use</string>
-    <string name="app_help">Tap on the image to change between the two images.</string>
+    <string name="app_help">Tap on the image to change between the two images. You may also use the volume button to achieve the same thing.</string>
     <string name="app_perms_issue">Read External Storage permission allows us to read files. Please allow this permission in App Settings.</string>
     <string name="image_content_desc">Some pre-set image</string>
 </resources>

@@ -58,6 +58,10 @@ public class MainFragment extends Fragment {
         });
     }
 
+    public void clickImage() {
+        ivc.performClick();
+    }
+
     private void loadScale() {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         final int progress = prefs.getInt(isViewingPass ?
